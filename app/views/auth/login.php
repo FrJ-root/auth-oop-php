@@ -45,7 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <h2>Login</h2>
 <!-- TODO: Add login form with input fields for username and password -->
-<!-- Add Bootstrap form classes as needed -->
 <form method="post" action="../../controllers/auth/login.php">
     <div class="form-group">
         <label for="username">Username:</label>

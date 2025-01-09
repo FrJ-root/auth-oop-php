@@ -9,7 +9,6 @@
 
 
 <!-- TODO: Display a table of users with options to edit or delete -->
-<!-- Use Bootstrap table classes -->
 <table class="table table-bordered">
     <thead>
         <tr>

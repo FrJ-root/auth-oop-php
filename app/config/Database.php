@@ -1,29 +1,29 @@
 <?php
 require __DIR__ . '/../../vendor/autoload.php';
 use Dotenv\Dotenv;
-
-// Load environment variables
 $dotenv = Dotenv::createImmutable(__DIR__ . '/../../');
 $dotenv->load();
 
-// Database configuration
-$servername = $_ENV['DB_HOST'];
-$username = $_ENV['DB_USER'];
-$password = $_ENV['DB_PASSWORD'];
-$dbname = $_ENV['DB_NAME'];
-
-try {
-    // Create a PDO connection
-    $dsn = "mysql:host=$servername;dbname=$dbname;charset=utf8mb4";
-    $pdo = new PDO($dsn, $username, $password);
-
-    // Set PDO error mode to exception
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // Confirm connection
-    // echo "Connected successfully";
-} catch (PDOException $e) {
-    // Handle connection error
-    die("Connection failed: " . $e->getMessage());
+class Database{
+    private $servername;
+    private $username;
+    private $password;
+    private $dbname;
+    public function __construct(){
+        $this->servername = $_ENV['localhost'];
+        $this->username = $_ENV['root'];
+        $this->password = $_ENV[''];
+        $this->dbname = $_ENV['situation'];
+    }
+    public function connection(){
+        try {
+            $dsn = "mysql:host=$this->servername;dbname=$this->dbname;charset=utf8mb4";
+            $pdo = new PDO($dsn, $this->username, $this->password);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $this->pdo;
+            echo "Connected successfully";
+        } catch (PDOException $e) {
+            die("Connection failed: " . $e->getMessage());
+        }
+    }
 }
-?>
